@@ -1,0 +1,31 @@
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        if (nums.length==0) return 0;
+         int i =0;
+         for (int j = 1;j<nums.length;j++){
+            if(nums[j] != nums[i]){
+                i++;
+            }
+            nums[i] = nums[j];
+         }
+        return i+1;
+    }   
+}
+
+/* Approach
+
+Two Pointers Technique
+Since the array is sorted, duplicates are always next to each other.
+Use two pointers:
+i → keeps track of the position of the last unique element.
+j → scans the array for the next unique element.
+Whenever nums[j] != nums[i], move i forward and place that unique value at nums[i].
+At the end, everything from nums[0..i] is unique.
+The length of the unique array = i + 1.
+
+✅ Time & Space Complexity
+Time Complexity: O(n)
+Each element is checked once by pointer j.
+
+Space Complexity: O(1)
+No extra data structure used, everything done in-place.
