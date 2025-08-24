@@ -1,0 +1,32 @@
+class Solution {
+    public void moveZeroes(int[] nums) {
+
+        int nonZero = 0;
+        for(int i = 0;i<nums.length;i++){
+            if(nums[i]!=0){
+                int temp = nums[i];
+                nums[i] = nums[nonZero];
+                nums[nonZero] =temp;
+                nonZero++;
+            }
+        }
+    }
+}
+
+
+✅ Approach:
+Use a two-pointer technique.
+Keep one pointer (nonZero) that tracks the position where the next non-zero element should go.
+Iterate over the array:
+If the current element is non-zero, swap it with the element at nonZero index and increment nonZero.
+This way, all non-zero elements are moved to the front, and zeros automatically shift to the end.
+
+🕒 Time Complexity:
+O(n) → We traverse the array once.
+
+💾 Space Complexity:
+O(1) → In-place swap, no extra space.
+
+🎯 Pattern:
+Two Pointers (fast-slow pointer style).
+Frequently used in array rearrangement problems like partitioning, sorting, moving elements with conditions.
