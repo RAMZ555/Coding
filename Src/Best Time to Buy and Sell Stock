@@ -1,0 +1,49 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+
+       int minPrice=Integer.MAX_VALUE;
+       int maxProfit=0;
+
+       for(int i=0;i<prices.length;i++){
+        if(prices[i]<minPrice){
+            minPrice=prices[i];
+        }else{
+
+            int profit=prices[i]-minPrice;
+            if(profit>maxProfit){
+                maxProfit=profit;
+            }
+        }
+       }
+       return maxProfit;
+    }
+}
+
+
+
+
+
+/*
+======================== APPROACH ========================
+Problem:
+- We want the maximum profit from one buy and one sell.
+- Condition: Sell must happen after buying.
+
+Naive Approach (O(n^2)):
+- Check all pairs (buy, sell) → too slow.
+
+Optimized Approach (One-Pass Greedy):
+1. Track the minimum price seen so far (minPrice).
+2. At each day, calculate profit = currentPrice - minPrice.
+3. Update maxProfit if profit is larger than before.
+4. Continue until end of array → maxProfit will hold answer.
+
+Pattern:
+- Greedy / One-pass optimization (similar to Kadane’s Algorithm idea).
+
+==================== COMPLEXITY ANALYSIS ====================
+Time Complexity: O(n)
+- We scan through the array once.
+
+Space Complexity: O(1)
+- Only two variables (minPrice, maxProfit).*/
