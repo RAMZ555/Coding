@@ -1,0 +1,53 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+         Map<Integer, Integer>map = new HashMap<>();
+
+         for(int i = 0;i<nums.length;i++){
+            int complement = target - nums[i];
+
+            if(map.containsKey(complement)){
+                return new int[] {map.get(complement),i};
+            } else {
+                map.put(nums[i],i);
+            }
+         }
+         return null;
+    }
+}
+
+
+
+/*======================== APPROACH ========================
+Problem:
+- Given an array of integers (nums) and a target value,
+  we need to find two distinct indices i and j such that:
+      nums[i] + nums[j] = target.
+
+Naive (Brute Force) Solution:
+- Check every pair using two nested loops.
+- Time Complexity = O(n^2), which is too slow for large inputs.
+
+Optimized Approach (Using HashMap):
+1. Create a HashMap to store numbers and their indices.
+   - Key   → number from array
+   - Value → index of that number
+2. Iterate through the array:
+   - For each number nums[i], compute its complement:
+         complement = target - nums[i]
+   - Check if complement already exists in the HashMap.
+     → If yes, we found the pair → return indices.
+     → If no, store nums[i] with its index in the HashMap.
+3. This way, each number is processed only once.
+
+Why it works:
+- HashMap allows O(1) lookup to check if the complement exists.
+- We avoid re-checking pairs, unlike the brute force approach.
+
+==================== COMPLEXITY ANALYSIS ====================
+Time Complexity: O(n)
+- We traverse the array once (n elements).
+- Each lookup and insert operation in HashMap is O(1) on average.
+- So total = O(n).
+
+Space Complexity: O(n)
+- In the worst case, we may need to store all n numbers in the HashMap.  */
