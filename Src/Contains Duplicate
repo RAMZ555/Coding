@@ -1,0 +1,27 @@
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        HashSet<Integer>mass=new HashSet<>();
+
+        for(int i=0;i<nums.length;i++){
+            if(mass.contains(nums[i])){
+                
+                return true;  
+        } 
+        mass.add(nums[i]);
+            }
+            return false;
+        } 
+    }
+
+/* Approach: Hashing with HashSet
+--------------------------------
+we use Hash set because it does not allow duplicate values
+- Iterate through array
+- If element already exists in HashSet → return true
+- Else add it to HashSet
+- If no duplicate found → return false
+
+Time Complexity: O(n)
+Space Complexity: O(n)
+Pattern: Hashing (Array + Set)
+*/
