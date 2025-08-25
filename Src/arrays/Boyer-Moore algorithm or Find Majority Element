@@ -1,0 +1,27 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+             int count = 0;
+             int candidate = 0;
+
+             for(int num : nums) {
+                 if(count == 0){
+                    candidate = num;
+                 }  
+                 if(num == candidate){
+                    count++;
+                 } else {
+                    count--;
+                 }
+             }
+           return candidate;
+    }
+}
+
+// The Boyer-Moore algorithm approach is: set count and candidate as 0. When count == 0, set the current number as candidate.
+If the next number is the same as candidate, increase count, otherwise decrease count. This way, 
+the element that appears more than half the time will remain at the end. Finally, 
+we return candidate because it holds the most frequent element.
+
+Time and Space
+Time: O(n) → loop runs once.
+Space: O(1) → only two variables used.
