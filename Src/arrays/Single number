@@ -1,0 +1,26 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        int result = 0;
+        for (int num : nums) {
+            result ^= num;
+        }
+        return result;
+    }
+}
+
+
+Algorithm :
+
+Initialize result = 0.
+Traverse array, do result ^= num for each element.
+
+How XOR works (bitwise):
+
+0 ^ 0 = 0
+1 ^ 0 = 1
+0 ^ 1 = 1
+1 ^ 1 = 0  // same number cancel out unique number only stay
+
+Complexity :
+Time: O(n) → one pass.
+Space: O(1) → only one variable.
