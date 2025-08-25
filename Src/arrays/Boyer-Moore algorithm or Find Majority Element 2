@@ -1,0 +1,47 @@
+class Solution {
+    public List<Integer> majorityElement(int[] nums) {
+
+int count1 = 0, count2 = 0;
+
+Integer candidate1=null, candidate2=null;
+
+for(int num: nums){
+    if(candidate1 != null && num==candidate1){
+        count1++;
+    } else if(candidate2 !=null && num==candidate2){
+        count2++;
+    } else if(count1 == 0){
+        candidate1=num;
+        count1=1;
+    } else if(count2 == 0){
+        candidate2=num;
+        count2=1;
+    }else {
+        count1--;
+        count2--;
+    }
+}
+count1 =0;
+count2=0;
+for(int num:nums){
+    if(candidate1==num) count1++;
+    else if(candidate2==num) count2++;
+}
+
+List<Integer>result=new ArrayList<>();
+if(count1 > nums.length / 3)result.add(candidate1);
+if(count2 > nums.length / 3)result.add(candidate2);
+
+return result;
+    }
+}
+
+//  "The Boyer-Moore majority vote algorithm works in two stages. In the first stage, we try to find at most two possible candidates
+that could occur more than n/3 times. We do this by maintaining two candidates and their counts while iterating:
+if the current number matches one of the candidates, we increment its count; if one of the counts is zero, 
+we assign the current number as a new candidate; otherwise, we decrement both counts.
+By the end, only potential majority candidates survive. In the second stage, since these are only suspects,
+we reset the counts and verify by scanning the array again to check how many times each candidate really appears. 
+If their count is more than n/3, we return them as the result."
+
+//It works in O(n) time with just O(1) space
