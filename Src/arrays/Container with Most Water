@@ -19,3 +19,7 @@ class Solution {
         return answer;
     }
 }
+
+🔹 Complexity
+Time: O(n) → only one pass through the array.
+Space: O(1) → no extra memory used.
